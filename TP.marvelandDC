@@ -1,0 +1,255 @@
+
+# INDUSTRIAS STARK - SYSTEM HEROES
+
+# Simulación de importación desde heroes.py
+# from heroes import lista_heroes
+
+lista_heroes = [
+    {
+        "nombre": "Spider-Man",
+        "identidad": "Peter Parker",
+        "empresa": "Marvel Comics",
+        "altura": 178,
+        "peso": 74,
+        "genero": "M",
+        "color_ojos": "Hazel",
+        "color_pelo": "Brown",
+        "fuerza": 55,
+        "inteligencia": "high"
+    },
+    {
+        "nombre": "Wonder Woman",
+        "identidad": "Diana Prince",
+        "empresa": "DC Comics",
+        "altura": 183,
+        "peso": 75,
+        "genero": "F",
+        "color_ojos": "Blue",
+        "color_pelo": "Black",
+        "fuerza": 100,
+        "inteligencia": "high"
+    },
+    {
+        "nombre": "Hulk",
+        "identidad": "Bruce Banner",
+        "empresa": "Marvel Comics",
+        "altura": 244,
+        "peso": 635,
+        "genero": "M",
+        "color_ojos": "Green",
+        "color_pelo": "Green",
+        "fuerza": 100,
+        "inteligencia": "genius"
+    }
+]
+
+
+# FUNCIONES 
+
+def mostrar_heroe(heroe):
+    print("\n==========================")
+    print(f"Nombre: {heroe['nombre']}")
+    print(f"Identidad: {heroe['identidad']}")
+    print(f"Empresa: {heroe['empresa']}")
+    print(f"Altura: {heroe['altura']} cm")
+    print(f"Peso: {heroe['peso']} kg")
+    print(f"Género: {heroe['genero']}")
+    print(f"Color de ojos: {heroe['color_ojos']}")
+    print(f"Color de pelo: {heroe['color_pelo']}")
+    print(f"Fuerza: {heroe['fuerza']}")
+    print(f"Inteligencia: {heroe['inteligencia']}")
+    print("==========================")
+
+
+def listar_heroes(lista):
+    if len(lista) == 0:
+        print("No hay héroes cargados.")
+    else:
+        for heroe in lista:
+            mostrar_heroe(heroe)
+
+
+def agregar_heroe(lista):
+
+    nombre = input("Ingrese nombre: ").strip()
+    while nombre == "":
+        nombre = input("Error. Reingrese nombre: ").strip()
+
+    identidad = input("Ingrese identidad: ").strip()
+    while identidad == "":
+        identidad = input("Error. Reingrese identidad: ").strip()
+
+    empresa = input("Ingrese empresa (DC Comics / Marvel Comics): ").strip()
+    while empresa != "DC Comics" and empresa != "Marvel Comics":
+        empresa = input("Error. Reingrese empresa: ").strip()
+
+    altura = float(input("Ingrese altura: "))
+    while altura <= 0:
+        altura = float(input("Error. Reingrese altura: "))
+
+    peso = float(input("Ingrese peso: "))
+    while peso <= 0:
+        peso = float(input("Error. Reingrese peso: "))
+
+    genero = input("Ingrese género (M/F/NB): ").strip()
+    while genero != "M" and genero != "F" and genero != "NB":
+        genero = input("Error. Reingrese género: ").strip()
+
+    color_ojos = input("Ingrese color de ojos: ").strip()
+
+    color_pelo = input("Ingrese color de pelo: ").strip()
+
+    fuerza = int(input("Ingrese fuerza: "))
+    while fuerza <= 0:
+        fuerza = int(input("Error. Reingrese fuerza: "))
+
+    inteligencia = input(
+        "Ingrese inteligencia (low/average/good/high/genius): "
+    ).strip()
+
+    while inteligencia not in ["low", "average", "good", "high", "genius"]:
+        inteligencia = input("Error. Reingrese inteligencia: ").strip()
+
+    nuevo_heroe = {
+        "nombre": nombre,
+        "identidad": identidad,
+        "empresa": empresa,
+        "altura": altura,
+        "peso": peso,
+        "genero": genero,
+        "color_ojos": color_ojos,
+        "color_pelo": color_pelo,
+        "fuerza": fuerza,
+        "inteligencia": inteligencia
+    }
+
+    lista.append(nuevo_heroe)
+
+    print("Héroe agregado correctamente.")
+
+# --------------------------------
+
+def eliminar_heroe(lista):
+
+    nombre = input("Ingrese el nombre del héroe a eliminar: ").strip()
+
+    encontrado = False
+
+    for heroe in lista:
+        if heroe["nombre"].lower() == nombre.lower():
+            lista.remove(heroe)
+            encontrado = True
+            print("Héroe eliminado correctamente.")
+            break
+
+    if encontrado == False:
+        print("No se encontró el héroe.")
+
+# --------------------------------
+
+def ordenar_heroes(lista):
+
+    for i in range(len(lista)-1):
+
+        for j in range(i+1, len(lista)):
+
+            if lista[i]["nombre"] > lista[j]["nombre"]:
+
+                aux = lista[i]
+                lista[i] = lista[j]
+                lista[j] = aux
+
+    print("Lista ordenada correctamente.")
+
+# --------------------------------
+
+def heroe_mas_alto(lista):
+
+    mayor = lista[0]
+
+    for heroe in lista:
+
+        if heroe["altura"] > mayor["altura"]:
+            mayor = heroe
+
+    print("\nHÉROE MÁS ALTO")
+    mostrar_heroe(mayor)
+
+
+
+def heroe_mas_fuerte(lista):
+
+    mayor = lista[0]
+
+    for heroe in lista:
+
+        if heroe["fuerza"] > mayor["fuerza"]:
+            mayor = heroe
+
+    print("\nHÉROE MÁS FUERTE")
+    mostrar_heroe(mayor)
+
+
+def heroe_mas_delgado(lista):
+
+    menor = lista[0]
+
+    for heroe in lista:
+
+        if heroe["peso"] < menor["peso"]:
+            menor = heroe
+
+    print("\nHÉROE MÁS DELGADO")
+    mostrar_heroe(menor)
+
+# MENU PRINCIPAL
+
+
+opcion = ""
+
+while opcion != "9":
+
+    print("\n========= INDUSTRIAS STARK =========")
+    print("1. Importar lista de héroes")
+    print("2. Listar héroes")
+    print("3. Agregar héroe")
+    print("4. Eliminar héroe")
+    print("5. Ordenar héroes por nombre")
+    print("6. Ver héroe más alto")
+    print("7. Ver héroe más fuerte")
+    print("8. Ver héroe más delgado")
+    print("9. Salir")
+
+    opcion = input("Ingrese una opción: ")
+
+    match opcion:
+
+        case "1":
+            print("Lista de héroes importada correctamente.")
+
+        case "2":
+            listar_heroes(lista_heroes)
+
+        case "3":
+            agregar_heroe(lista_heroes)
+
+        case "4":
+            eliminar_heroe(lista_heroes)
+
+        case "5":
+            ordenar_heroes(lista_heroes)
+
+        case "6":
+            heroe_mas_alto(lista_heroes)
+
+        case "7":
+            heroe_mas_fuerte(lista_heroes)
+
+        case "8":
+            heroe_mas_delgado(lista_heroes)
+
+        case "9":
+            print("Saliendo del sistema...")
+
+        case _:
+            print("Opción inválida.")
