@@ -4,43 +4,22 @@
 # Simulación de importación desde heroes.py
 # from heroes import lista_heroes
 
-lista_heroes = [
-    {
-        "nombre": "Spider-Man",
-        "identidad": "Peter Parker",
-        "empresa": "Marvel Comics",
-        "altura": 178,
-        "peso": 74,
-        "genero": "M",
-        "color_ojos": "Hazel",
-        "color_pelo": "Brown",
-        "fuerza": 55,
-        "inteligencia": "high"
-    },
-    {
-        "nombre": "Wonder Woman",
-        "identidad": "Diana Prince",
-        "empresa": "DC Comics",
-        "altura": 183,
-        "peso": 75,
-        "genero": "F",
-        "color_ojos": "Blue",
-        "color_pelo": "Black",
-        "fuerza": 100,
-        "inteligencia": "high"
-    },
-    {
-        "nombre": "Hulk",
-        "identidad": "Bruce Banner",
-        "empresa": "Marvel Comics",
-        "altura": 244,
-        "peso": 635,
-        "genero": "M",
-        "color_ojos": "Green",
-        "color_pelo": "Green",
-        "fuerza": 100,
-        "inteligencia": "genius"
-    }
+lista_heroes = lista_heroes = [
+
+    ["Spider-Man", "Peter Parker", "Marvel Comics", 178, 74,
+     "M", "Hazel", "Brown", 55, "high"],
+
+    ["Wonder Woman", "Diana Prince", "DC Comics", 183, 75,
+     "F", "Blue", "Black", 100, "high"],
+
+    ["Hulk", "Bruce Banner", "Marvel Comics", 244, 635,
+     "M", "Green", "Green", 100, "genius"],
+
+    ["Batman", "Bruce Wayne", "DC Comics", 188, 95,
+     "M", "Blue", "Black", 40, "genius"],
+
+    ["Superman", "Clark Kent", "DC Comics", 191, 107,
+     "M", "Blue", "Black", 100, "high"]
 ]
 
 
@@ -209,7 +188,7 @@ opcion = ""
 
 while opcion != "9":
 
-    print("\n========= INDUSTRIAS STARK =========")
+    print("\n * INDUSTRIAS STARK * ")
     print("1. Importar lista de héroes")
     print("2. Listar héroes")
     print("3. Agregar héroe")
